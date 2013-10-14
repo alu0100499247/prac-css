@@ -10,10 +10,6 @@ module PiedraPapelTijeras
 			@content_type = :html
 			@defeat = {'piedra' => 'tijeras', 'papel' => 'piedra', 'tijeras' => 'papel'}
 			@throws = @defeat.keys
-			$choose = @throws.map { |x|
-				%Q{ <li><a href="/?choice=#{x}"> #{x} </a></li> }
-			}.join("\n")
-			$choose = "<p>\n<ul>\n#{$choose}\n</ul>"
 		end
 
 		def call(env)
@@ -37,7 +33,6 @@ module PiedraPapelTijeras
 			res = Rack::Response.new
 			res.write engine.render({},
 				:answer => answer,
-				:choose => $choose,
 				:throws => @throws)
 			res.finish
 		end
@@ -47,13 +42,16 @@ end
 if $0 == __FILE__
 	require 'rack'
 	require 'rack/showexceptions'
-	Rack::Server.start(
-		:app => Rack::ShowExceptions.new(
-					Rack::Lint.new(
-						PiedraPapelTijeras::App.new)),
-		:Port => 9292,
-		:server => 'thin'
-	)
+
+	builder = Rack::Builder.new do
+		use Rack::Static, :urls => ['/public']
+		use Rack::ShowExceptions
+		use Rack::Lint
+
+		run PiedraPapelTijeras::App.new
+	end
+
+	Rack::Handler::Thin.run builder
 end
 
 

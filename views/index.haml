@@ -1,8 +1,33 @@
 %html
-	%meta{"http-equiv" => "Content-Type", :content => "text/html;charset=UTF-8"}
-	%title PPT
-	%body
-		%h1 
-			#{answer}
-			#{$choose}
+	%head
+		%meta{"http-equiv" => "Content-Type", :content => "text/html;charset=UTF-8"}
+		%title PPT
+		%link{:href => "/public/css/bootstrap.css", :rel => "stylesheet"}
+		%link{:href => "/public/css/bootstrap-responsive.css", :rel => "stylesheet"}/	
+		%script{:src => "/public/js/bootstrap.js"}	
+	%body{:background => "/public/img/fondo.jpg"}
+		.navbar.navbar-inverse.navbar-fixed-top
+			.navbar-inner
+				.container
+					%a.brand{:href => "https://dl.dropboxusercontent.com/u/14539152/LPP/LPPbook/index.html"} STW
+					.nav-collapse.collapse					
+						%ul.nav
+							%li.active
+								%a{:href => "/"} Inicio
+							%li
+								%a{:href => "https://dl.dropboxusercontent.com/u/14539152/LPP/LPPbook/node356.html"} Acerca de
+		.container
+			%br%br
+			%h1 #{answer}
+			%br
+			%h2
+				%ul
+					%li	
+						%a{:href => "/?choice=piedra"} Piedra	
+					%br		
+					%li	
+						%a{:href => "/?choice=papel"} Papel			
+					%br					
+					%li	
+						%a{:href => "/?choice=tijeras"} Tijeras		
 			
