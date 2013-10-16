@@ -19,3 +19,8 @@ desc "Ejecutar la práctica eligiendo tijeras"
 task :tijeras do
 	sh %q{curl -v 'http://localhost:9292/?choice=tijeras'}
 end
+
+desc "Tarea de prueba"
+task :hola do
+	puts "Hola mundo!!"
+end

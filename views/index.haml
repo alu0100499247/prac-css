@@ -16,18 +16,115 @@
 								%a{:href => "/"} Inicio
 							%li
 								%a{:href => "https://dl.dropboxusercontent.com/u/14539152/LPP/LPPbook/node356.html"} Acerca de
+		%br
+		%br		
 		.container
-			%br%br
-			%h1 #{answer}
-			%br
-			%h2
-				%ul
-					%li	
-						%a{:href => "/?choice=piedra"} Piedra	
-					%br		
-					%li	
-						%a{:href => "/?choice=papel"} Papel			
-					%br					
-					%li	
-						%a{:href => "/?choice=tijeras"} Tijeras		
+			.row-fluid
+				.span12
+					%br
+					- if (alert == 0)
+						.alert.alert-info
+							%center
+								%h1 #{answer}
+					- elsif (alert == 1)
+						.alert
+							%center
+								%h1 #{answer}
+					- elsif (alert == 2)
+						.alert.alert-success
+							%center
+								%h1 #{answer}
+					- else
+						.alert.alert-error
+							%center
+								%h1 #{answer}
+					%br
+					%br
+						.row-fluid
+							.span4
+								%center
+									%a{:href => "/?choice=piedra", :class => "btn btn-large btn-success"} Piedra
+							.span4
+								%center
+									%a{:href => "/?choice=papel", :class => "btn btn-large btn-warning"} Papel
+							.span4
+								%center
+									%a{:href => "/?choice=tijeras", :class => "btn btn-large btn-danger"} Tijeras
+						%br
+						%br
+						.row-fluid
+							.span6
+								%center
+									%h1 Usuario: #{user}
+									%br
+									- if (user == 'piedra')
+										%img{:src => "/public/img/user_piedra.jpg", :height => "250", :width => "250"}
+									- elsif (user == 'papel')
+										%img{:src => "/public/img/user_papel.jpg", :height => "250", :width => "250"}
+									- elsif (user == 'tijeras')
+										%img{:src => "/public/img/user_tijeras.jpg", :height => "250", :width => "250"}
+									- else
+										%img{:src => "/public/img/user_null.jpg", :height => "250", :width => "250"}
+							.span6
+								%center
+									- if ((user != 'piedra') && (user != 'papel') && (user != 'tijeras'))
+										%h1 Máquina: 
+										%br
+										%img{:src => "/public/img/pc_null.jpg", :height => "250", :width => "250"}
+									- elsif (pc == 'piedra')
+										%h1 Máquina: #{pc}
+										%br
+										%img{:src => "/public/img/pc_piedra.jpg", :height => "250", :width => "250"}
+									- elsif (pc == 'papel')
+										%h1 Máquina: #{pc}
+										%br
+										%img{:src => "/public/img/pc_papel.jpg", :height => "250", :width => "250"}
+									- elsif (pc == 'tijeras')
+										%h1 Máquina: #{pc}
+										%br
+										%img{:src => "/public/img/pc_tijeras.jpg", :height => "250", :width => "250"}
+								
 			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
