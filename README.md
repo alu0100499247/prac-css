@@ -17,8 +17,6 @@ El contenido del fichero que se presenta es el siguiente:
 * Gemfile.lock
 * README
 * Rakefile
-* lib
-	* ppt.rb
 * public
 	* css
 	* img
